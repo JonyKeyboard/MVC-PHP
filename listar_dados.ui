@@ -48,6 +48,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -56,15 +57,15 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(198, 198, 198);</string>
+     <string notr="true"/>
     </property>
     <column>
      <property name="text">
-      <string>Nome</string>
+      <string>NOME</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>9</pointsize>
+       <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -75,10 +76,11 @@
     </column>
     <column>
      <property name="text">
-      <string>Preço</string>
+      <string>PRECO</string>
      </property>
      <property name="font">
       <font>
+       <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -86,10 +88,11 @@
     </column>
     <column>
      <property name="text">
-      <string>Descrição</string>
+      <string>DESCRIÇAO</string>
      </property>
      <property name="font">
       <font>
+       <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>

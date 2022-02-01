@@ -1,5 +1,6 @@
 from PyQt5 import  uic,QtWidgets
 import mysql.connector  
+from reportlab.pdfgen import canvas
 
 numero_id = 0
 
@@ -9,7 +10,7 @@ banco = mysql.connector.connect(
     passwd="",
     database="cadastro_recibos"
 )
-
+ 
 def funcao_principal():
     nome = formulario.lineEditNome.text()
     preco = formulario.doubleSpinBox.text().replace(',' , '.')
@@ -18,6 +19,23 @@ def funcao_principal():
     print("Nome:",nome)
     print("Preco:",preco)
     print("Descrição:",descricao)
+
+    pdf = canvas.Canvas("C:/Users/melissa/Downloads/recibo.pdf")
+    pdf.setFont("Times-Bold", 25)
+    pdf.drawString(200,800, "Recibo:")
+    pdf.setFont("Times-Bold", 18)
+
+    pdf.drawString(10,750, "Nome")
+    pdf.drawString(110,750, "Preço")
+    pdf.drawString(210,750, "Descrição")
+        
+    pdf.drawString(10,700, nome)
+    pdf.drawString(110,700, preco)
+    pdf.drawString(210,700, descricao)
+
+    pdf.save()
+    print("PDF FOI GERADO COM SUCESSO!")
+
     
 
     cursor = banco.cursor()
