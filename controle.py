@@ -10,6 +10,18 @@ banco = mysql.connector.connect(
     passwd="",
     database="cadastro_recibos"
 )
+
+def excluir_dados():
+    linha = segunda_tela.tableWidget.currentRow()
+    segunda_tela.tableWidget.removeRow(linha)
+
+    cursor = banco.cursor()
+    cursor.execute("SELECT id FROM recibos")
+    dados_lidos = cursor.fetchall()
+    valor_id = dados_lidos[linha][0]
+    cursor.execute("DELETE FROM recibos WHERE id="+str(valor_id))
+    ##print(valor_id)
+
  
 def funcao_principal():
     nome = formulario.lineEditNome.text()
@@ -35,8 +47,6 @@ def funcao_principal():
 
     pdf.save()
     print("PDF FOI GERADO COM SUCESSO!")
-
-    
 
     cursor = banco.cursor()
     comando_SQL = "INSERT INTO recibos (nome,preco,descricao) VALUES (%s,%s,%s)"
@@ -66,8 +76,9 @@ def chama_segunda_tela():
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("listar_dados.ui")
-formulario.ButtonGerar.clicked.connect(funcao_principal)
+formulario.ButtonGerar.clicked.connect(funcao_principal)         
 formulario.ButtonGerados.clicked.connect(chama_segunda_tela)
+segunda_tela.ButtonExcluir.clicked.connect(excluir_dados)
 
 formulario.show()
 app.exec()

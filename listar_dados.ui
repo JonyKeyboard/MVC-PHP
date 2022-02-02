@@ -43,7 +43,7 @@
       <x>20</x>
       <y>40</y>
       <width>581</width>
-      <height>451</height>
+      <height>381</height>
      </rect>
     </property>
     <property name="font">
@@ -98,6 +98,27 @@
       </font>
      </property>
     </column>
+   </widget>
+   <widget class="QPushButton" name="ButtonExcluir">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>440</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>EXCLUIR</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
