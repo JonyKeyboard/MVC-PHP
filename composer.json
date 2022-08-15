@@ -1,8 +1,0 @@
-{
-    "name" : "wdev/mvc-php",
-    "autoload": {
-        "psr-4": {
-            "App\\":"app/"
-        }
-    }
-}
