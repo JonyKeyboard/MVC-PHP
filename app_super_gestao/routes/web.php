@@ -13,21 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return 'Olá aqui é a pagina principal';
-});*/
-Route::get('/', 'PrincipalController@principal');
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login',  function() { return 'Login'; })->name('site.login');
 
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+Route::prefix('/app')->group(function() {
+    Route::get('/clientes',  function() { return 'Clientes'; })->name('app.clientes');
+    Route::get('/fornecedores',  function() { return 'Fornecedores'; })->name('app.clientes');
+    Route::get('/produtos',  function() { return 'Produtos'; })->name('app.produtos');
+});
 
-Route::get('/contato', 'ContatoController@contato');
+Route::get('/rota1', function() {
+    echo 'Rota 1';
+})->name('site.rota1');
 
-Route::get(
-    '/contato/{nome}/{categoria_id}',
-    function(
-        string $nome = 'Desconhecido',
-        int $categoria_id = 1 // 1 - informação
-        ) {
-            echo "Estamos aqui: $nome - $categoria_id";
-        }
-)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+Route::get('/rota2', function() {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+//Route::redirect('/rota2', '/rota1');
+
+Route::fallback(function() {
+    echo 'A rota acessado não existe. <a href="/"> clique aqui</a> para ir para a página inicial';
+});
+
