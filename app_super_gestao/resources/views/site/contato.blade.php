@@ -21,8 +21,6 @@
         </div>
     </div>
 
-    {{ print_r($motivo_contatos) }}
-
     <div class="rodape">
         <div class="redes-sociais">
             <h2>Redes sociais</h2>
