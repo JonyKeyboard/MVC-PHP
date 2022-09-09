@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginController extends Controller
 {
-    public function index() {
-        return view('site.login', ['titulo' => 'Login']);
+    public function index(Request $request) {
+
+        $erro = '';
+
+        if($request->get('erro') == 1) {
+            $erro = 'Usuário ou senha não encontrado';
+        }
+
+        return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
+
     }
 
     public function autenticar(Request $request) {
@@ -27,7 +36,25 @@ class LoginController extends Controller
         //se não passar pelo validate
         $request->validate($regras, $feedback);
 
-        print_r($request->all());
+        // recuperar parâmetros dos usuários
+        $email = $request->get('usuario');
+        $password = $request->get('senha');
 
+        echo "Usuário: $email | Senha: $password";
+        echo "<br>";
+
+        //iniciar model User
+        $user = new User();
+
+        $usuario = $user->where('email', $email)
+                    ->where('password', $password)
+                    ->get()
+                    ->first();
+
+        if(isset($usuario->name)) {
+            echo 'Usuário existe';
+        } else {
+            return redirect()->route('site.login', ['erro' => 1]);
+        }
     }
 }
