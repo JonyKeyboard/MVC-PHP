@@ -25,7 +25,7 @@ Route::post('/login',  'LoginController@autenticar')->name('site.login');
 
 Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(function() {
     Route::get('/clientes',  function() { return 'Clientes'; })->name('app.clientes');
-    Route::get('/fornecedores', 'FornecedorController@index' )->name('app.clientes');
+    Route::get('/fornecedores', 'FornecedorController@index' )->name('app.fornecedores');
     Route::get('/produtos',  function() { return 'Produtos'; })->name('app.produtos');
 });
 
