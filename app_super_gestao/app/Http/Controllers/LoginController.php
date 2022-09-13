@@ -7,7 +7,7 @@ use App\User;
 
 class LoginController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request){
 
         $erro = '';
 
@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     }
 
-    public function autenticar(Request $request) {
+    public function autenticar(Request $request){
 
         //regras de validação
         $regras = [
