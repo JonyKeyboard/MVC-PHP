@@ -49,7 +49,7 @@ class ProdutoController extends Controller
         $feedback = [
             'required' => 'O campo :attribute deve ser preenchido',
             'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres',
-            'nome.min' => 'O campo nome deve ter no máximo 40 caracteres',
+            'nome.max' => 'O campo nome deve ter no máximo 40 caracteres',
             'descricao.min' => 'O campo descricao deve ter no mínimo 3 caracteres',
             'descricao.max' => 'O campo descricao deve ter no máximo 2000 caracteres',
             'peso.integer' => 'O campo peso deve ser umm número inteiro',
@@ -82,8 +82,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        //return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
-        return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        //return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
