@@ -17,7 +17,7 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         $produtos = Produto::paginate(10);
-
+        /*
         foreach($produtos as $key => $produto){
             //print_r($produto->getAttributes());
             //echo '<br><br>';
@@ -32,7 +32,7 @@ class ProdutoController extends Controller
                 $produtos[$key]['altura'] = $produtoDetalhe->altura;
             }
             //echo '<hr>';
-        }
+        }*/
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
