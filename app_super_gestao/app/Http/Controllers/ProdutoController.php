@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Produto;
 use App\ProdutoDetalhe;
 use App\Unidade;
@@ -16,23 +17,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::paginate(10);
-        /*
-        foreach($produtos as $key => $produto){
-            //print_r($produto->getAttributes());
-            //echo '<br><br>';
-
-            $produtoDetalhe = ProdutoDetalhe::where('produto_id', $produto->id)->first();
-            //sem o first seria um collection, mas nesse caso é uma objeto ProdutoDetalhe
-            if(isset($produtoDetalhe)){
-                //print_r($produtoDetalhe->getAttributes());
-
-                $produtos[$key]['comprimento'] = $produtoDetalhe->comprimento;
-                $produtos[$key]['largura'] = $produtoDetalhe->largura;
-                $produtos[$key]['altura'] = $produtoDetalhe->altura;
-            }
-            //echo '<hr>';
-        }*/
+        $produtos = Item::paginate(10);
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
