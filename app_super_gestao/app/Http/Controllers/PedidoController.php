@@ -41,17 +41,19 @@ class PedidoController extends Controller
         //dd($request);
         $regras = [
             'cliente_id' => 'exists:clientes,id'
+            //'cliente_id' => 'required'
         ];
 
         $feedback = [
             'cliente_id.exists' => 'O cliente informado não existe'
+            //'cliente_id' => 'O cliente informado não existe'
         ];
 
-        $request->validade($regras, $feedback);
+        //$request->validade($regras, $feedback);
 
-        //$pedido = new Pedido();
-        //$pedido->cliente_id = $request->get('cliente_id');
-        //$pedido->save();
+        $pedido = new Pedido();
+        $pedido->cliente_id = $request->get('cliente_id');
+        $pedido->save();
 
         return redirect()->route('pedido.index');
     }
